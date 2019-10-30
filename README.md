@@ -1,4 +1,4 @@
-# qrreaderapp
+# QRReaderApp
 
 A new Flutter project.
 
