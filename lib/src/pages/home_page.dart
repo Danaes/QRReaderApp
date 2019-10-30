@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
     String futureString = '';
 
-    try {
+    /* try {
       futureString = await new QRCodeReader().scan();
     }
     catch (e) {
@@ -54,7 +54,9 @@ class _HomePageState extends State<HomePage> {
 
     if (futureString != null) {
 
-    }
+    }*/
+
+    
   }
 
   Widget _callPage( int currentPage) {
