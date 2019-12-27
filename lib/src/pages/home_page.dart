@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:qrcode_reader/qrcode_reader.dart';
+import 'package:qrreaderapp/src/models/scan_model.dart';
 
 import 'package:qrreaderapp/src/pages/mapas_page.dart';
 import 'package:qrreaderapp/src/pages/direcciones_page.dart';
+import 'package:qrreaderapp/src/providers/db_provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -41,20 +43,20 @@ class _HomePageState extends State<HomePage> {
     // https://www.google.es
     // geo:40.77729065096283,-74.18446913203127
 
-    String futureString = '';
+    String futureString = 'https://www.google.es';
 
     /* try {
       futureString = await new QRCodeReader().scan();
     }
     catch (e) {
       futureString = e.toString();
-    }
-
-    print(futureString);
+    }*/
 
     if (futureString != null) {
+      final scan = ScanModel(valor: futureString);
+      DBProvider.db.insert(scan);
 
-    }*/
+    }
 
     
   }
