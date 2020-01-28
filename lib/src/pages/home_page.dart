@@ -38,13 +38,13 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: _scanQR,
+        onPressed: () => _scanQR(context),
         backgroundColor: Theme.of(context).primaryColor,
       ),
     );
   }
 
-  _scanQR () async {
+  _scanQR (BuildContext context) async {
 
     // https://www.google.es
     // geo:40.77729065096283,-74.18446913203127
@@ -67,10 +67,10 @@ class _HomePageState extends State<HomePage> {
 
       if(Platform.isIOS) {
         Future.delayed(Duration(milliseconds: 750), () {
-          utils.openScan(scan);
+          utils.openScan(context, scan);
         });
       } else {
-        utils.openScan(scan);
+        utils.openScan(context, scan);
       }
 
     }

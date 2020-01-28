@@ -35,7 +35,7 @@ class MapasPage extends StatelessWidget {
               leading: Icon(Icons.cloud_queue, color: Theme.of(context).primaryColor),
               title: Text(scans[i].valor),
               trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
-              onTap: () => utils.openScan(scans[i]),
+              onTap: () => utils.openScan(context, scans[i]),
             ),
           ),
         );
