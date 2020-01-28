@@ -36,7 +36,8 @@ class _MapaPageState extends State<MapaPage> {
         zoom: 10
       ),
       layers: [
-        _createMap()
+        _createMap(),
+        _createMarks(context, scan)
       ],
     );
 
@@ -48,8 +49,21 @@ class _MapaPageState extends State<MapaPage> {
       '{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}',
       additionalOptions: {
         'accessToken': 'pk.eyJ1IjoiZGFuYWVzIiwiYSI6ImNrNXh0ZTNnYjA1a2QzbG5vYTd5N3hjM2UifQ.oThenMvqNCjObbjK4N4now',
-        'id': 'mapbox.streets'
+        'id': 'mapbox.dark' //streets, dark, light, outdoors, satellite
       }
+    );
+  }
+
+  MarkerLayerOptions _createMarks(BuildContext context, ScanModel scan) {
+    return MarkerLayerOptions(
+      markers: <Marker> [
+        Marker(
+          width: 100.0, height: 100.0, point: scan.getLatLng(),
+          builder: (context) => Container(
+            child: Icon(Icons.location_on, size: 45.0, color: Theme.of(context).primaryColor),
+          )
+        )
+      ]
     );
   }
 }
