@@ -11,8 +11,11 @@ class MapasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    scansBloc.getScans();
+
     return StreamBuilder<List<ScanModel>>(
-      stream: scansBloc.scansStream,
+      stream: scansBloc.scansStreamGeo,
       builder: (BuildContext context, AsyncSnapshot<List<ScanModel>> snapshot) {
         
         if(!snapshot.hasData){
@@ -26,6 +29,7 @@ class MapasPage extends StatelessWidget {
         }
 
         return ListView.builder(
+
           itemCount: scans.length,
           itemBuilder: (context, i) => Dismissible(
             key: UniqueKey(),
