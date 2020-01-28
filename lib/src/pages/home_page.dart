@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:qrcode_reader/qrcode_reader.dart';
 import 'package:qrreaderapp/src/bloc/scan_bloc.dart';
@@ -5,6 +7,9 @@ import 'package:qrreaderapp/src/models/scan_model.dart';
 
 import 'package:qrreaderapp/src/pages/mapas_page.dart';
 import 'package:qrreaderapp/src/pages/direcciones_page.dart';
+
+import 'package:qrreaderapp/src/utils/utils.dart' as utils;
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -56,6 +61,17 @@ class _HomePageState extends State<HomePage> {
     if (futureString != null) {
       final scan = ScanModel(valor: futureString);
       scansBloc.addScan(scan);
+
+      // final scan2 = ScanModel(valor: 'geo:40.77729065096283,-74.18446913203127');
+      // scansBloc.addScan(scan2);
+
+      if(Platform.isIOS) {
+        Future.delayed(Duration(milliseconds: 750), () {
+          utils.openScan(scan);
+        });
+      } else {
+        utils.openScan(scan);
+      }
 
     }
 
