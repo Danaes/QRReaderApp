@@ -49,21 +49,18 @@ class _HomePageState extends State<HomePage> {
     // https://www.google.es
     // geo:40.77729065096283,-74.18446913203127
 
-    String futureString = 'https://www.google.es';
+    String futureString;
 
-    /* try {
+    try {
       futureString = await new QRCodeReader().scan();
     }
     catch (e) {
       futureString = e.toString();
-    }*/
+    }
 
     if (futureString != null) {
       final scan = ScanModel(valor: futureString);
       scansBloc.addScan(scan);
-
-      final scan2 = ScanModel(valor: 'geo:40.77729065096283,-74.18446913203127');
-      scansBloc.addScan(scan2);
 
       if(Platform.isIOS) {
         Future.delayed(Duration(milliseconds: 750), () {
@@ -103,7 +100,7 @@ class _HomePageState extends State<HomePage> {
           title: Text('Mapas')
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.brightness_5),
+          icon: Icon(Icons.cloud_queue),
           title: Text('Direcciones')
         )
       ],

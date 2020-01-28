@@ -36,7 +36,7 @@ class MapasPage extends StatelessWidget {
             background: Container(color: Colors.redAccent),
             onDismissed: (direction) => scansBloc.removeScan(scans[i].id),
             child: ListTile(
-              leading: Icon(Icons.cloud_queue, color: Theme.of(context).primaryColor),
+              leading: Icon(Icons.map, color: Theme.of(context).primaryColor),
               title: Text(scans[i].valor),
               trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
               onTap: () => utils.openScan(context, scans[i]),
